@@ -70,9 +70,9 @@ whisk:
     guest: "23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP"
   systemNameSpace: "/whisk.system"
   limits:
-    actionsInvokesPerminute: 60
-    actionsInvokesConcurrent: 30
-    triggersFiresPerminute: 60
+    actionsInvokesPerminute: 99999
+    actionsInvokesConcurrent: 99999
+    triggersFiresPerminute: 99999
     actionsSequenceMaxlength: 50
     actions:
       time:
@@ -81,11 +81,11 @@ whisk:
         std: "1m"
       memory:
         min: "128m"
-        max: "512m"
+        max: "2048m"
         std: "256m"
       concurrency:
         min: 1
-        max: 1
+        max: 1500
         std: 1
       log:
         min: "0m"
@@ -95,7 +95,7 @@ whisk:
       payload:
         max: "1048576"
   loadbalancer:
-    blackboxFraction: "10%"
+    blackboxFraction: "100%"
     timeoutFactor: 2
   # Kafka configuration. For all sub-fields a value of "" means use the default from application.conf
   kafka:
@@ -129,9 +129,9 @@ whisk:
     includeSystemTests: false
   versions:
     openwhisk:
-      buildDate: "2020-10-07-10:25:41Z"
-      buildNo: "20201007a"
-      gitTag: "ed3f76e38d89468d11e862ee0539e74f02ac7f8e"
+      buildDate: "2020-10-20-01:00:00Z"
+      buildNo: "v1.0.0:20201020a"
+      gitTag: "1.0.0"
     openwhiskCli:
       tag: "1.1.0"
     openwhiskCatalog:
@@ -152,7 +152,7 @@ k8s:
 # Images used to run auxillary tasks/jobs
 utility:
   imageName: "openwhisk/ow-utils"
-  imageTag: "ed3f76e"
+  imageTag: "1.0.0"
   imagePullPolicy: "IfNotPresent"
 
 # Docker registry
@@ -240,7 +240,6 @@ nginx:
   httpPort: 80
   httpsPort: 443
   httpsNodePort: 31001
-  workerProcesses: "auto"
   certificate:
     external: false
     cert_file: ""
@@ -250,7 +249,7 @@ nginx:
 # Controller configurations
 controller:
   imageName: "openwhisk/controller"
-  imageTag: "ed3f76e"
+  imageTag: "1.0.0"
   imagePullPolicy: "IfNotPresent"
   replicaCount: 1
   restartPolicy: "Always"
@@ -263,13 +262,12 @@ controller:
 # Invoker configurations
 invoker:
   imageName: "openwhisk/invoker"
-  imageTag: "ed3f76e"
+  imageTag: "1.0.0"
   imagePullPolicy: "IfNotPresent"
   restartPolicy: "Always"
-  runtimeDeleteTimeout: "30 seconds"
   port: 8080
   options: ""
-  jvmHeapMB: "512"
+  jvmHeapMB: "1024"
   jvmOptions: ""
   loglevel: "INFO"
   containerFactory:
@@ -318,7 +316,7 @@ redis:
 # User-events configuration
 user_events:
   imageName: "openwhisk/user-events"
-  imageTag: "ed3f76e"
+  imageTag: "1.0.0"
   imagePullPolicy: "IfNotPresent"
   replicaCount: 1
   restartPolicy: "Always"

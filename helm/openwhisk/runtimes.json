@@ -52,20 +52,6 @@
         ],
         "python": [
             {
-                "kind": "python:2",
-                "default": false,
-                "image": {
-                    "prefix": "openwhisk",
-                    "name": "python2action",
-                    "tag": "1.13.0-incubating"
-                },
-                "deprecated": false,
-                "attached": {
-                    "attachmentName": "codefile",
-                    "attachmentType": "text/plain"
-                }
-            },
-            {
                 "kind": "python:3",
                 "default": true,
                 "image": {

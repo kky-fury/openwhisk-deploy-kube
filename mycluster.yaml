@@ -1,0 +1,28 @@
+controller:
+  replicaCount: 1
+whisk:
+  ingress:
+    type: NodePort
+    apiHostName: 192.168.0.51
+    apiHostPort: 31001
+  limits:
+    actions:
+      memory:
+        max: "2048m"
+      time:
+        max: "5m"
+    activation:
+      payload:
+        max: "128000000"
+k8s:
+  persistence:
+    enabled: false
+nginx:
+  httpsNodePort: 31001
+invoker:
+  containerFactory:
+    impl: "kubernetes"
+metrics:
+  prometheusEnabled: true
+  kamonEnabled: true
+  userMetricsEnabled: true
