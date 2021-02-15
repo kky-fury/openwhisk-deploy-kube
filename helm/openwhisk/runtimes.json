@@ -7,7 +7,7 @@
                 "image": {
                     "prefix": "openwhisk",
                     "name": "action-nodejs-v10",
-                    "tag": "1.17.0"
+                    "tag": "1.16.0"
                 },
                 "deprecated": false,
                 "attached": {
@@ -21,7 +21,7 @@
                 "image": {
                     "prefix": "openwhisk",
                     "name": "action-nodejs-v12",
-                    "tag": "1.17.0"
+                    "tag": "1.16.0"
                 },
                 "deprecated": false,
                 "attached": {
@@ -35,7 +35,23 @@
                 "image": {
                     "prefix": "openwhisk",
                     "name": "action-nodejs-v14",
-                    "tag": "1.17.0"
+                    "tag": "1.16.0"
+                },
+                "deprecated": false,
+                "attached": {
+                    "attachmentName": "codefile",
+                    "attachmentType": "text/plain"
+                }
+            }
+        ],
+        "iot" : [
+            {
+                "kind": "authentication",
+                "default": true,
+                "image": {
+                    "prefix": "iotplatformcaps",
+                    "name": "owruntime_authapp",
+                    "tag": "runtime"
                 },
                 "deprecated": false,
                 "attached": {
@@ -45,6 +61,20 @@
             }
         ],
         "python": [
+            {
+                "kind": "python:2",
+                "default": false,
+                "image": {
+                    "prefix": "openwhisk",
+                    "name": "python2action",
+                    "tag": "1.13.0-incubating"
+                },
+                "deprecated": false,
+                "attached": {
+                    "attachmentName": "codefile",
+                    "attachmentType": "text/plain"
+                }
+            },
             {
                 "kind": "python:3",
                 "default": true,
@@ -256,3 +286,4 @@
         }
     ]
 }
+

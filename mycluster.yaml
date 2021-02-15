@@ -1,5 +1,6 @@
 controller:
-  replicaCount: 1
+  replicaCount: 2
+  jvmHeapMB: "2048"
 whisk:
   ingress:
     type: NodePort
@@ -14,6 +15,8 @@ whisk:
     activation:
       payload:
         max: "128000000"
+  containerPool:
+      userMemory: "15370m"
 k8s:
   persistence:
     enabled: false
@@ -22,6 +25,9 @@ nginx:
 invoker:
   containerFactory:
     impl: "kubernetes"
+    replicaCount: 3
+  jvmHeapMB: "1024"
+  options: "-Dwhisk.spi.LogStoreProvider=org.apache.openwhisk.core.containerpool.logging.LogDriverLogStoreProvider"
 metrics:
   prometheusEnabled: true
   kamonEnabled: true
